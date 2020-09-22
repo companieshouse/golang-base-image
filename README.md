@@ -1,4 +1,4 @@
-# go-base-image
+# golang-base-image
 
 Base Docker images for go applications.
 
@@ -9,10 +9,10 @@ Base Docker images for go applications.
 
 ## Supported images
 
-| Tag                                                                        | OS         | Go version |
-| -------------------------------------------------------------------------- | ---------- | ---------- |
-| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/go:1.15-alpine-builder` | Alpine     | 1.15.x     |
-| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/go:1.15-alpine-runtime` | Alpine     | 1.15.x     |
+| Tag                                                                            | OS         | Go version |
+| ------------------------------------------------------------------------------ | ---------- | ---------- |
+| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-builder` | Alpine     | 1.15.x     |
+| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-runtime` | Alpine     | 1.15.x     |
 
 ## Image properties
 
@@ -39,9 +39,9 @@ Follow below steps to package go application as a Docker image:
 2. create `Dockerfile` file with instructions below and adjust port number to one application uses:
 
    ```dockerfile
-   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/go:1.15-alpine-builder
+   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-builder
     
-   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/go:1.15-alpine-runtime
+   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-runtime
     
    CMD ["-bind-address=:9999"]
     
