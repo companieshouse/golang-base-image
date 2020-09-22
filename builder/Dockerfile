@@ -1,6 +1,6 @@
 FROM golang:1.15-alpine as builder
 
-RUN apk add --no-cache git=~2.26 openssh-client=~8.3
+RUN apk add --no-cache git=~2.26 openssh-client=~8.3 build-base=~0.5
 
 RUN git config --global url."git@github.com:".insteadOf https://github.com/
 
