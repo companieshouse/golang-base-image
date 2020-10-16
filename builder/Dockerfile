@@ -15,6 +15,10 @@ ONBUILD RUN mkdir -m 0600 ~/.ssh \
     && chmod 600 ~/.ssh/id_rsa \
     && ssh-keygen -p -f ~/.ssh/id_rsa -P "${SSH_PRIVATE_KEY_PASSPHRASE}" -N ""
 
+ONBUILD COPY go.mod go.sum ./
+
+ONBUILD RUN go mod download
+
 ONBUILD COPY . ./
 
 ONBUILD RUN go fmt ./... && go build -o /tmp/app
