@@ -7,6 +7,16 @@ Base Docker images for go applications.
 - [Sample use](#sample-use)
 - [Licence](#license)
 
+## Known Issues
+
+Docker releases `>=2.4.0.0` have [BuildKit](https://github.com/moby/buildkit) enabled by default - this breaks image builds due to a known issue (https://github.com/moby/buildkit/issues/816) with `BuildKit` and `ONBUILD COPY --from` directives which we use in our `runtime` image.
+
+To fix this you can disable BuildKit in one of two ways:
+
+1. Prefix `docker build` commands with `DOCKER_BUILDKIT=0` 
+2. Disable BuildKit system wide by configuring the Docker daemon for your system - see: https://docs.docker.com/config/daemon/#configure-the-docker-daemon
+
+
 ## Supported images
 
 | Tag                                                                            | OS         | Go version |
@@ -48,7 +58,7 @@ Follow below steps to package go application as a Docker image:
    EXPOSE 9999
    ```
 
-3. build Docker image using `docker build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_rsa)" --build-arg SSH_PRIVATE_KEY_PASSPHRASE -t 169942020521.dkr.ecr.eu-west-1.amazonaws.com/local/[application name] .` command
+3. build Docker image using `DOCKER_BUILDKIT=0 docker build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_rsa)" --build-arg SSH_PRIVATE_KEY_PASSPHRASE -t 169942020521.dkr.ecr.eu-west-1.amazonaws.com/local/[application name] .` command
 
 ## License
 
