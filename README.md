@@ -22,7 +22,7 @@ To fix this you can disable BuildKit in one of two ways:
 | Tag                                                                            | OS         | Go version |
 | ------------------------------------------------------------------------------ | ---------- | ---------- |
 | `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-builder` | Alpine     | 1.15.x     |
-| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-runtime` | Alpine     | 1.15.x     |
+| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-runtime`      | Alpine     | None       |
 
 ## Image properties
 
@@ -51,9 +51,9 @@ Follow below steps to package go application as a Docker image:
    ```dockerfile
    FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-builder
     
-   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-runtime
+   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-runtime
     
-   CMD ["-bind-address=:9999"]
+   CMD ["-bind-addr=:9999"]
     
    EXPOSE 9999
    ```
