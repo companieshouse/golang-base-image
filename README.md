@@ -13,7 +13,7 @@ Docker releases `>=2.4.0.0` have [BuildKit](https://github.com/moby/buildkit) en
 
 To fix this you can disable BuildKit in one of two ways:
 
-1. Prefix `docker build` commands with `DOCKER_BUILDKIT=0` 
+1. Prefix `docker build` commands with `DOCKER_BUILDKIT=0`
 2. Disable BuildKit system wide by configuring the Docker daemon for your system - see: https://docs.docker.com/config/daemon/#configure-the-docker-daemon
 
 
@@ -22,6 +22,7 @@ To fix this you can disable BuildKit in one of two ways:
 | Tag                                                                            | OS         | Go version |
 | ------------------------------------------------------------------------------ | ---------- | ---------- |
 | `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-builder` | Alpine     | 1.15.x     |
+| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-builder` | Alpine     | 1.16.x     |
 | `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-runtime`      | Alpine     | None       |
 
 ## Image properties
@@ -31,7 +32,7 @@ Here are the build arguments used in the base builder images:
 | Name                         | Default value | Required | Comment                                                             |
 | ---------------------------- | ------------- | -------- | ------------------------------------------------------------------- |
 | `SSH_PRIVATE_KEY`            | none          | yes      | used to pull dependencies from GitHub during build phase            |
-| `SSH_PRIVATE_KEY_PASSPHRASE` | none          | no       | used to remove passphrase from key, needed only if key is protected | 
+| `SSH_PRIVATE_KEY_PASSPHRASE` | none          | no       | used to remove passphrase from key, needed only if key is protected |
 
 Here are the properties used in the base runtime images:
 
@@ -42,19 +43,19 @@ Here are the properties used in the base runtime images:
 
 ## Sample use
 
-Follow below steps to package go application as a Docker image: 
+Follow below steps to package go application as a Docker image:
 
 1. create `.dockeringore` file to filter out files that should not be copied to Docker image
 
 2. create `Dockerfile` file with instructions below and adjust port number to one application uses:
 
    ```dockerfile
-   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-builder
-    
+   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-builder
+
    FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-runtime
-    
+
    CMD ["-bind-addr=:9999"]
-    
+
    EXPOSE 9999
    ```
 
