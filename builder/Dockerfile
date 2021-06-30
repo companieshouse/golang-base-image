@@ -2,7 +2,7 @@ FROM golang:1.16-alpine as builder
 
 ENV GOPRIVATE="github.com/companieshouse"
 
-RUN apk add --no-cache git=~2.30 openssh-client=~8.4 build-base=~0.5
+RUN apk add --no-cache git=~2.32 openssh-client=~8.6 build-base=~0.5
 
 RUN git config --global url."git@github.com:".insteadOf https://github.com/
 
