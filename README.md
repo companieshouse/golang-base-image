@@ -38,7 +38,6 @@ Here are the properties used in the base runtime images:
 | Directive    | Value      |
 | ------------ | ---------- |
 | `WORKDIR`    | `/app`     |
-| `ENTRYPOINT` | `/app/app` |
 
 ## Sample use
 
