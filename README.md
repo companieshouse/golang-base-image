@@ -22,7 +22,7 @@ To fix this you can disable BuildKit in one of two ways:
 | Tag                                                                                  | OS         | Go version |
 | ------------------------------------------------------------------------------------ | ---------- | ---------- |
 | `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-debug-builder` | Alpine     | 1.16.x     |
-| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-debug-runtime`      | Alpine     | None       |
+| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-debug-runtime` | Alpine     | None       |
 
 ## Image properties
 
@@ -51,7 +51,7 @@ Follow below steps to package go application in debug mode as a Docker image:
    ```dockerfile
    FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-debug-builder
 
-   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-debug-runtime
+   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-debug-runtime
 
    CMD ["./dlv", "exec", "--listen=:9999", "--headless=true", "--api-version=2", "./app"]
 
