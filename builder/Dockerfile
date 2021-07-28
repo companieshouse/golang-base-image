@@ -3,6 +3,7 @@ FROM golang:1.16-alpine as builder
 ENV GOPRIVATE="github.com/companieshouse"
 
 RUN apk add --no-cache git openssh-client build-base
+RUN go get github.com/go-delve/delve/cmd/dlv
 
 RUN git config --global url."git@github.com:".insteadOf https://github.com/
 
@@ -23,4 +24,5 @@ ONBUILD RUN go mod download
 
 ONBUILD COPY . ./
 
-ONBUILD RUN go fmt ./... && go build -o /tmp/app
+ONBUILD RUN go fmt ./...
+ONBUILD RUN go build -gcflags="all=-N -l" -o /tmp/app
