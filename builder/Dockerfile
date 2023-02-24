@@ -1,8 +1,11 @@
-FROM golang:1.19.6-alpine as builder
+FROM golang:1.19.6-bullseye as builder
 
 ENV GOPRIVATE="github.com/companieshouse"
 
-RUN apk add --no-cache git openssh-client build-base
+RUN apt update && \
+    apt install \
+    git && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN git config --global url."git@github.com:".insteadOf https://github.com/
 
