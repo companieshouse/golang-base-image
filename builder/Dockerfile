@@ -3,8 +3,8 @@ FROM golang:1.19.6-bullseye as builder
 ENV GOPRIVATE="github.com/companieshouse"
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends\
-    git && \
+    apt-get install -y --allow-downgrades --no-install-recommends\
+    git=1:2.30.2-1 && \
     rm -rf /var/lib/apt/lists/*
 
 RUN git config --global url."git@github.com:".insteadOf https://github.com/
