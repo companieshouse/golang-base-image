@@ -3,7 +3,7 @@ FROM golang:1.19.6-bullseye as builder
 ENV GOPRIVATE="github.com/companieshouse"
 
 RUN apt-get update && \
-    apt-get install \
+    apt-get install -y --no-install-recommends\
     git && \
     rm -rf /var/lib/apt/lists/*
 
