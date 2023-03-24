@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM amazonlinux:2023
 
 WORKDIR /app
 
