@@ -2,7 +2,9 @@ FROM amazonlinux:2023 as builder
 
 ENV GOPRIVATE="github.com/companieshouse"
 
-RUN yum -y install golang-1.19.3 git \
+ARG GO_VERSION=1.19.3
+
+RUN yum -y install golang-$GO_VERSION git \
     && yum clean all
 
 RUN git config --global url."git@github.com:".insteadOf https://github.com/
