@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM amazonlinux:2023
 
 RUN apt-get update && \
     apt-get install -y --allow-downgrades --no-install-recommends\
