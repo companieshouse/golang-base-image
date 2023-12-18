@@ -5,7 +5,7 @@ ENV GOPRIVATE="github.com/companieshouse"
 ONBUILD ARG SSH_PRIVATE_KEY
 ONBUILD ARG SSH_PRIVATE_KEY_PASSPHRASE
 
-ADD ./builder/bin/go_build /bin/
+COPY ./builder/bin/go_build /bin/
 
 RUN chmod +x /bin/go_build && \
     git config --global url."git@github.com:".insteadOf https://github.com/
