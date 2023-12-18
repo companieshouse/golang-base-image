@@ -7,16 +7,6 @@ Base Docker images for go applications.
 - [Sample use](#sample-use)
 - [Licence](#license)
 
-## Known Issues
-
-Docker releases `>=2.4.0.0` have [BuildKit](https://github.com/moby/buildkit) enabled by default - this breaks image builds due to a known issue (https://github.com/moby/buildkit/issues/816) with `BuildKit` and `ONBUILD COPY --from` directives which we use in our `runtime` image.
-
-To fix this you can disable BuildKit in one of two ways:
-
-1. Prefix `docker build` commands with `DOCKER_BUILDKIT=0`
-2. Disable BuildKit system wide by configuring the Docker daemon for your system - see: https://docs.docker.com/config/daemon/#configure-the-docker-daemon
-
-
 ## Supported images
 
 | Tag                                                                            | OS     | Go version |
@@ -51,9 +41,13 @@ Follow below steps to package go application as a Docker image:
 2. create `Dockerfile` file with instructions below and adjust port number to one application uses:
 
    ```dockerfile
-   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-builder
+   FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-builder AS BUILDER
+
+   RUN /bin/go_build
 
    FROM 169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-runtime
+
+   COPY --from=BUILDER /build/out/app ./
 
    CMD ["-bind-addr=:9999"]
 
