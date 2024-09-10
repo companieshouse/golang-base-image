@@ -13,7 +13,8 @@ Base Docker images for go applications.
 |--------------------------------------------------------------------------------|--------|------------|
 | `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.15-alpine-builder` | Alpine | 1.15.x     |
 | `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.16-alpine-builder` | Alpine | 1.16.x     |
-| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.19-alpine-builder` | Debian | 1.19.x     |
+| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.19-bullseye-builder` | Debian | 1.19.x   |
+| `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:1.23-bullseye-builder` | Debian | 1.23.x   |
 | `169942020521.dkr.ecr.eu-west-1.amazonaws.com/base/golang:alpine-runtime`      | Alpine | None       |
 
 ## Image properties
